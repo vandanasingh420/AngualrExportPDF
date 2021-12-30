@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <div class="heading_bar">
+        <h2>List of Projects</h2>
+        <button class="btn btn-primary" (click)="addProject()">
+        Add Project
+    </button>
+        <button class="btn btn-primary" (click)="logout()">
+        Logout
+    </button>
+        <button class="btn btn-primary" (click)="downloadAsPDF()">
+        Export CV
+    </button>
+        <!-- <button (click)="deleteSelectedMultiple()">Delete Data</button> -->
+    </div>
+    <table class="table table-striped" id="pdfTable" #pdfTable>
+        <thead>
+            <tr>
+                <!-- <th><input mdbCheckbox class="form-check-input" type="checkbox" value="" id="flexCheckDefault" /></th> -->
+                <th><input class="form-check-input" id="flexCheckDefault" type="checkbox" [checked]="isAllCheckBoxChecked()" (change)="checkAllCheckBox($event)"></th>
+                <th>Project Name</th>
+                <th>Project URL</th>
+                <th>Technology</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of ProjectLists; let i=index; let odd = odd" [ngClass]="odd ? 'odd_col' : 'even_col'">
+                <!-- <td><input mdbCheckbox class="form-check-input" type="checkbox" value="" id="{{project.id}}" /></td> -->
+                <td><input (click)="onSelect(project)" id="{{project.id}}" type="checkbox" value="{{project.id}}" [(ngModel)]="ProjectLists[i].checked"></td>
+
+                <td>{{ project.projectName }}</td>
+                <td>{{ project.projectUrl }}</td>
+                <td>{{ project.technology }}</td>
+                <td><span class="action" (click)="editData(project.id)" [(ngModel)]="currentMsgToChild1" name="editValue" ngDefaultControl>Edit</span> | <span class="action" (click)="deleteData(project.id)">Delete</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <app-form [msgFromParent1]="currentMsgToChild1"></app-form> -->

@@ -1,0 +1,11 @@
+.heading_bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+span.action {
+    cursor: pointer;
+    color: dodgerblue;
+    font-weight: 500;
+}

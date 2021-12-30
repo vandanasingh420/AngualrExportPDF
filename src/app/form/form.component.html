@@ -1,0 +1,45 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Add Project</h4>
+        <div class="card-body">
+            <form [formGroup]="projectForm" (ngSubmit)="addProjectData()">
+                <div class="form-group">
+                    <label for="projectName">Project Name</label>
+
+                    <input type="text" formControlName="projectName" class="form-control" [(ngModel)]="projectName" [ngClass]="{ 'is-invalid': submitted && f.projectName.errors }" />
+                    <div *ngIf="submitted && f.projectName.errors" class="invalid-feedback">
+                        <div *ngIf="f.projectName.errors.required">Project Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectUrl">Project URL</label>
+                    <input type="text" formControlName="projectUrl" class="form-control" [(ngModel)]="projectUrl" [ngClass]="{ 'is-invalid': submitted && f.projectUrl.errors }" />
+                    <div *ngIf="submitted && f.projectUrl.errors" class="invalid-feedback">
+                        <div *ngIf="f.projectUrl.errors.required">Project URL is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="technology">Technology Used</label>
+                    <input type="text" formControlName="technology" class="form-control" [(ngModel)]="technology" [ngClass]="{ 'is-invalid': submitted && f.technology.errors }" />
+                    <div *ngIf="submitted && f.technology.errors" class="invalid-feedback">
+                        <div *ngIf="f.technology.errors.required">Technology is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectDesc">Project Description</label>
+                    <textarea formControlName="projectDesc" class="form-control" [(ngModel)]="projectDesc" id="projectDesc" rows="4" [ngClass]="{ 'is-invalid': submitted && f.projectDesc.errors }"></textarea>
+                    <div *ngIf="submitted && f.projectDesc.errors" class="invalid-feedback">
+                        <div *ngIf="f.projectDesc.errors.required">Project Description is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">
+                  <!-- <span class="spinner-border spinner-border-sm mr-1"></span> -->
+                  Submit
+              </button>
+                    <!-- <a routerLink="../register" class="btn btn-link">Register</a> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
